@@ -318,7 +318,7 @@ body {
 
 .sidebar-header {
     position: relative;
-    padding: 18px 0 14px;
+    padding: 8px 0 14px;
     flex-shrink: 0;
 }
 
@@ -958,6 +958,18 @@ select option {
 
 .stat i {
     color: var(--primary);
+}
+
+/* Completion rate border styling */
+#completionRate {
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-sm);
+    padding: 4px 8px;
+    background: rgba(0, 240, 255, 0.05);
+    color: var(--primary);
+    text-align: center;
+    line-height: 1.2;
+    font-weight: 500;
     font-size: 14px;
 }
 
@@ -1058,7 +1070,7 @@ select option {
     transition: var(--transition-fast);
     user-select: none;
     gap: 6px;
-    margin-top: 8px;
+    margin-top: 20px;
 }
 
 .go-to-top-btn:hover {
@@ -1842,6 +1854,13 @@ body[data-theme="minimal"] .select-wrapper::after {
         display: flex;
         align-items: center;
         gap: 4px;
+    }
+    
+    /* Mobile completion rate text styling */
+    #mobileCompletionRate {
+        text-align: center;
+        line-height: 1.2;
+        font-weight: 500;
     }
 
     .mobile-completion-rate i {
