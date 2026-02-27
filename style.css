@@ -132,11 +132,7 @@ body {
 }
 
 .grid-overlay {
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: gridMove 20s linear infinite;
+    display: none;
 }
 
 @keyframes gridMove {
@@ -157,12 +153,12 @@ body {
 
 .particle {
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
     background: var(--primary);
     border-radius: 50%;
-    opacity: 0.6;
-    animation: particleFloat 15s ease-in-out infinite;
+    opacity: 0.7;
+    animation: particleFloat 12s linear infinite;
 }
 
 .particle:nth-child(1) {
@@ -190,101 +186,71 @@ body {
     animation-delay: -12s;
 }
 
-@keyframes particleFloat {
-    0% {
-        transform: translateY(100vh) scale(0);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0.6;
-    }
-
-    90% {
-        opacity: 0.6;
-    }
-
-    100% {
-        transform: translateY(-100px) scale(1);
-        opacity: 0;
-    }
+.particle:nth-child(6) {
+    left: 15%;
+    animation-delay: -15s;
 }
 
-.grid-overlay {
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: gridMove 20s linear infinite;
+.particle:nth-child(7) {
+    left: 25%;
+    animation-delay: -18s;
 }
 
-@keyframes gridMove {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(50px, 50px);
-    }
+.particle:nth-child(8) {
+    left: 45%;
+    animation-delay: -21s;
 }
 
-.floating-particles {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
+.particle:nth-child(9) {
+    left: 65%;
+    animation-delay: -24s;
 }
 
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--primary);
-    border-radius: 50%;
-    opacity: 0.6;
-    animation: particleFloat 15s ease-in-out infinite;
+.particle:nth-child(10) {
+    left: 85%;
+    animation-delay: -27s;
 }
 
-.particle:nth-child(1) {
-    left: 10%;
-    animation-delay: 0s;
+.particle:nth-child(11) {
+    left: 5%;
+    animation-delay: -30s;
 }
 
-.particle:nth-child(2) {
-    left: 30%;
-    animation-delay: -3s;
-}
-
-.particle:nth-child(3) {
-    left: 50%;
-    animation-delay: -6s;
-}
-
-.particle:nth-child(4) {
-    left: 70%;
-    animation-delay: -9s;
-}
-
-.particle:nth-child(5) {
-    left: 90%;
-    animation-delay: -12s;
+.particle:nth-child(12) {
+    left: 75%;
+    animation-delay: -33s;
 }
 
 @keyframes particleFloat {
     0% {
-        transform: translateY(100vh) scale(0);
+        transform: translateY(100vh) translateX(0px) scale(0.5);
         opacity: 0;
     }
 
-    10% {
-        opacity: 0.6;
+    5% {
+        opacity: 0.7;
+        transform: translateY(95vh) translateX(10px) scale(1);
     }
 
-    90% {
-        opacity: 0.6;
+    25% {
+        transform: translateY(75vh) translateX(-15px) scale(1);
+    }
+
+    50% {
+        transform: translateY(50vh) translateX(20px) scale(1);
+    }
+
+    75% {
+        transform: translateY(25vh) translateX(-10px) scale(1);
+    }
+
+    95% {
+        opacity: 0.7;
+        transform: translateY(5vh) translateX(5px) scale(1);
     }
 
     100% {
-        transform: translateY(-100px) scale(1);
+        transform: translateY(-10vh) translateX(0px) scale(0.5);
         opacity: 0;
     }
 }
@@ -1072,6 +1038,11 @@ select option {
     }
 }
 
+/* Mobile completion rate - hidden by default */
+.mobile-completion-rate {
+    display: none;
+}
+
 /* ===== MENU TOGGLE - always fixed top-left ===== */
 .menu-toggle-btn {
     position: fixed;
@@ -1168,6 +1139,23 @@ select option {
     padding-bottom: env(safe-area-inset-bottom, 20px);
     position: relative;
     z-index: 1;
+}
+
+/* Add background image with low opacity */
+.preview-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('Bg/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: -2;
+    pointer-events: none;
 }
 
 .preview-controls {
@@ -1800,6 +1788,38 @@ body[data-theme="minimal"] .select-wrapper::after {
         /* Keep transparent */
     }
 
+    /* Hide stats bar on mobile */
+    .stats-bar {
+        display: none;
+    }
+
+    /* Replace stats bar with download/preview options */
+    .live-preview-indicator {
+        display: flex !important;
+        margin-bottom: 0;
+    }
+
+    /* Mobile completion rate indicator */
+    .mobile-completion-rate {
+        position: fixed;
+        top: 60px;
+        right: 14px;
+        z-index: 9999998;
+        background: rgba(0, 240, 255, 0.1);
+        border: 1px solid rgba(0, 240, 255, 0.3);
+        border-radius: var(--radius-sm);
+        padding: 4px 8px;
+        font-size: 10px;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .mobile-completion-rate i {
+        font-size: 10px;
+    }
+
     .sidebar {
         position: fixed;
         top: 0;
@@ -1923,6 +1943,13 @@ body[data-theme="minimal"] .select-wrapper::after {
 
     .dev-card {
         gap: 7px;
+    }
+
+    /* Smaller completion rate on smaller screens */
+    .mobile-completion-rate {
+        top: 56px;
+        font-size: 9px;
+        padding: 3px 6px;
     }
 
 }
