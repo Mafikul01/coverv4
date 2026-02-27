@@ -960,17 +960,8 @@ select option {
     color: var(--primary);
 }
 
-/* Completion rate border styling */
-#completionRate {
-    border: 1px solid var(--primary);
-    border-radius: var(--radius-sm);
-    padding: 4px 8px;
-    background: rgba(0, 240, 255, 0.05);
-    color: var(--primary);
+.stat span {
     text-align: center;
-    line-height: 1.2;
-    font-weight: 500;
-    font-size: 14px;
 }
 
 .live-preview-indicator {
