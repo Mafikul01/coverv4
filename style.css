@@ -281,9 +281,9 @@ body {
 .main-layout {
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
-    height: 100%;
-    /* Use 100% for mobile browser compatibility */
-    min-height: 100%;
+    height: 100dvh;
+    /* Use dvh for mobile browser compatibility */
+    min-height: 100dvh;
     transition: grid-template-columns var(--transition-slow);
     background: transparent;
     /* Let background effects show through */
@@ -298,10 +298,10 @@ body {
     background: var(--surface);
 
     border-right: 1px solid var(--border);
-    height: 100%;
+    height: 100dvh;
     overflow: hidden;
-    /* Use 100% for mobile compatibility */
-    min-height: 100%;
+    /* Use dvh for mobile compatibility */
+    min-height: 100dvh;
     position: relative;
     transition: transform var(--transition-slow);
     box-shadow: 4px 0 30px rgba(0, 0, 0, 0.35);
@@ -1003,8 +1003,7 @@ select option {
     transition: var(--transition-fast);
     border-left: 1px solid rgba(0, 240, 255, 0.22);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    color: var(--wa-green);
-    font-weight: 600;
+    color:#25D366;
 }
 
 .download-section:hover {
@@ -1042,6 +1041,34 @@ select option {
 /* Mobile completion rate - hidden by default */
 .mobile-completion-rate {
     display: none;
+}
+
+/* ===== GO TO TOP BUTTON ===== */
+.go-to-top-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(112, 0, 255, 0.1);
+    border: 1px solid rgba(112, 0, 255, 0.3);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    font-size: 11px;
+    color: var(--secondary);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    user-select: none;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.go-to-top-btn:hover {
+    background: rgba(112, 0, 255, 0.15);
+    border-color: rgba(112, 0, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+.go-to-top-btn i {
+    font-size: 12px;
 }
 
 /* ===== MENU TOGGLE - always fixed top-left ===== */
@@ -1134,8 +1161,8 @@ select option {
     overflow: hidden;
     background: transparent !important;
     /* 100% transparent overlay */
-    min-height: 100%;
-    height: 100%;
+    min-height: 100dvh;
+    height: 100dvh;
     /* Fixed height to prevent shrinking */
     padding-bottom: env(safe-area-inset-bottom, 20px);
     position: relative;
@@ -1783,8 +1810,8 @@ body[data-theme="minimal"] .select-wrapper::after {
 
     .main-layout {
         grid-template-columns: 1fr !important;
-        height: 100%;
-        min-height: 100%;
+        height: 100dvh;
+        min-height: 100dvh;
         background: transparent;
         /* Keep transparent */
     }
@@ -1794,27 +1821,18 @@ body[data-theme="minimal"] .select-wrapper::after {
         display: none;
     }
 
-    /* Show download/preview options instead of stats bar */
+    /* Replace stats bar with download/preview options */
     .live-preview-indicator {
         display: flex !important;
-        margin-bottom: 50px;
-        margin-top: 15px;
-        position: relative;
-        z-index: 1000;
+        margin-bottom: 0;
     }
 
-    /* Ensure download section is visible */
-    .download-section {
-        color: var(--wa-green) !important;
-        font-weight: 600;
-    }
-
-    /* Mobile completion rate indicator - positioned to not interfere */
+    /* Mobile completion rate indicator */
     .mobile-completion-rate {
         position: fixed;
-        top: 80px;
+        top: 60px;
         right: 14px;
-        z-index: 9999997;
+        z-index: 9999998;
         background: rgba(0, 240, 255, 0.1);
         border: 1px solid rgba(0, 240, 255, 0.3);
         border-radius: var(--radius-sm);
@@ -1824,8 +1842,6 @@ body[data-theme="minimal"] .select-wrapper::after {
         display: flex;
         align-items: center;
         gap: 4px;
-        backdrop-filter: blur(5px);
-        margin-top: 10px;
     }
 
     .mobile-completion-rate i {
@@ -1840,7 +1856,7 @@ body[data-theme="minimal"] .select-wrapper::after {
         width: var(--sidebar-width);
         z-index: 9999;
         transform: translateX(-100%);
-        height: 100%;
+        height: 100dvh;
         background: var(--surface);
     }
 
@@ -1870,7 +1886,7 @@ body[data-theme="minimal"] .select-wrapper::after {
         top: 14px;
         right: 14px;
         z-index: 9999999 !important;
-        margin: 0 0 15px 0;
+        margin: 0;
         box-shadow: 0 4px 18px rgba(0, 240, 255, 0.4);
         width: auto;
         height: 42px;
@@ -1932,8 +1948,8 @@ body[data-theme="minimal"] .select-wrapper::after {
         padding: 0 12px;
         border-radius: 8px;
         font-size: 11px;
-        min-width: 100px;
-        /* Reduce width to avoid overlap */
+        min-width: 120px;
+        /* Ensure button is wide enough */
         z-index: 9999999 !important;
         position: fixed !important;
         top: 14px !important;
@@ -1957,13 +1973,11 @@ body[data-theme="minimal"] .select-wrapper::after {
         gap: 7px;
     }
 
-    /* Adjusted completion rate position for smaller screens */
+    /* Smaller completion rate on smaller screens */
     .mobile-completion-rate {
-        top: 60px;
-        right: 14px;
+        top: 56px;
         font-size: 9px;
         padding: 3px 6px;
-        max-width: 60px;
     }
 
 }
