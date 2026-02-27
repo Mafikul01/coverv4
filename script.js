@@ -582,6 +582,17 @@ document.querySelectorAll('input[type="text"]').forEach(input => {
     input.addEventListener('input', debouncedUpdate);
 });
 
+// ==================== SCROLL TO TOP ====================
+function scrollToTop() {
+    const formScroll = document.querySelector('.form-scroll');
+    if (formScroll) {
+        formScroll.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+}
+
 // ==================== EXPOSE GLOBALS ====================
 window.toggleSidebar     = toggleSidebar;
 window.closeSidebar      = closeSidebar;
@@ -603,3 +614,4 @@ window.onT1DesignationChange = onT1DesignationChange;
 window.onT2DesignationChange = onT2DesignationChange;
 window.updateTeacherDesignations = updateTeacherDesignations;
 window.updateCompletionRate      = updateCompletionRate;
+window.scrollToTop               = scrollToTop;
