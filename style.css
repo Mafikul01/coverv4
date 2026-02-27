@@ -1003,7 +1003,8 @@ select option {
     transition: var(--transition-fast);
     border-left: 1px solid rgba(0, 240, 255, 0.22);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    color:#25D366;
+    color: var(--wa-green);
+    font-weight: 600;
 }
 
 .download-section:hover {
@@ -1793,18 +1794,26 @@ body[data-theme="minimal"] .select-wrapper::after {
         display: none;
     }
 
-    /* Replace stats bar with download/preview options */
+    /* Show download/preview options instead of stats bar */
     .live-preview-indicator {
         display: flex !important;
-        margin-bottom: 0;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1000;
     }
 
-    /* Mobile completion rate indicator */
+    /* Ensure download section is visible */
+    .download-section {
+        color: var(--wa-green) !important;
+        font-weight: 600;
+    }
+
+    /* Mobile completion rate indicator - positioned to not interfere */
     .mobile-completion-rate {
         position: fixed;
-        top: 60px;
+        top: 70px;
         right: 14px;
-        z-index: 9999998;
+        z-index: 9999997;
         background: rgba(0, 240, 255, 0.1);
         border: 1px solid rgba(0, 240, 255, 0.3);
         border-radius: var(--radius-sm);
@@ -1814,6 +1823,7 @@ body[data-theme="minimal"] .select-wrapper::after {
         display: flex;
         align-items: center;
         gap: 4px;
+        backdrop-filter: blur(5px);
     }
 
     .mobile-completion-rate i {
@@ -1920,8 +1930,8 @@ body[data-theme="minimal"] .select-wrapper::after {
         padding: 0 12px;
         border-radius: 8px;
         font-size: 11px;
-        min-width: 120px;
-        /* Ensure button is wide enough */
+        min-width: 100px;
+        /* Reduce width to avoid overlap */
         z-index: 9999999 !important;
         position: fixed !important;
         top: 14px !important;
@@ -1945,11 +1955,13 @@ body[data-theme="minimal"] .select-wrapper::after {
         gap: 7px;
     }
 
-    /* Smaller completion rate on smaller screens */
+    /* Adjusted completion rate position for smaller screens */
     .mobile-completion-rate {
-        top: 56px;
+        top: 60px;
+        right: 14px;
         font-size: 9px;
         padding: 3px 6px;
+        max-width: 60px;
     }
 
 }
