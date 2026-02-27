@@ -972,7 +972,7 @@ select option {
     border: 1px solid rgba(0, 240, 255, 0.22);
     border-radius: var(--radius-sm);
     margin-bottom: 9px;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--primary);
     transition: var(--transition-fast);
     user-select: none;
@@ -985,7 +985,7 @@ select option {
     align-items: center;
     justify-content: center;
     gap: 7px;
-    padding: 7px 12px;
+    padding: 12px 16px;
     cursor: pointer;
     transition: var(--transition-fast);
     border-radius: var(--radius-sm) 0 0 var(--radius-sm);
@@ -1001,7 +1001,7 @@ select option {
     align-items: center;
     justify-content: center;
     gap: 7px;
-    padding: 7px 12px;
+    padding: 14px 16px;
     cursor: pointer;
     transition: var(--transition-fast);
     border-left: 1px solid rgba(0, 240, 255, 0.22);
@@ -1014,17 +1014,18 @@ select option {
 }
 
 .live-preview-indicator i {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .pulse-dot {
     width: 7px;
     height: 7px;
-    align-items:center;
     background: #ff0000;
     border-radius: 50%;
     animation: pulse 2s infinite;
     flex-shrink: 0;
+    transform: translateY(1px);
+    align-items:center;
 }
 
 @keyframes pulse {
@@ -1061,7 +1062,7 @@ select option {
     transition: var(--transition-fast);
     user-select: none;
     gap: 6px;
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 .go-to-top-btn:hover {
