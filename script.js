@@ -396,11 +396,11 @@ function updateCompletionRate() {
     });
     const pct = Math.round((filled / trackIds.length) * 100);
     const el = document.getElementById('completionRate');
-    if (el) el.textContent = pct + '%';
+    if (el) el.innerHTML = 'Completed<br>' + pct + '%';
     
     // Update mobile completion rate
     const mobileEl = document.getElementById('mobileCompletionRate');
-    if (mobileEl) mobileEl.textContent = pct + '%';
+    if (mobileEl) mobileEl.innerHTML = 'Completed<br>' + pct + '%';
 }
 
 // ==================== TOAST ====================
